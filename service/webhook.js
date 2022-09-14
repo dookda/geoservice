@@ -8,8 +8,6 @@ const client = new line.Client(config);
 
 app.post('/webhook', middleware(config), async (req, res) => {
     res.sendStatus(200)
-    // const e = req.body.events.length;
-    // console.log(req.body)
     if (req.body.events[0].type === 'message' && req.body.events[0].message.type === 'text') {
         handleMessageEvent(req.body.events[0]);
     } else {
@@ -18,11 +16,11 @@ app.post('/webhook', middleware(config), async (req, res) => {
 })
 
 const handleMessageEvent = async (e) => {
-    console.log(e);
+    // console.log(e);
     if (e.message.text === 'hello') {
         const msg = {
             type: 'text',
-            text: 'hello, world'
+            text: 'hello, how are you?'
         }
         return client.replyMessage(e.replyToken, msg);
     }

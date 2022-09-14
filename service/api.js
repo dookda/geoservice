@@ -25,7 +25,8 @@ app.post("/api/pushmsg", (req, res) => {
         // console.log(userId);
         // userId = 'U176de9c656286feb470b121c184e1356'
         client.pushMessage(userId, msg)
-        res.status(200).send();
+        // res.status(200).send();
+        res.sendStatus(200)
     }
 
 });
