@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/pushmsg HTTP/1.1
+content-type: application/json
+
+{
+   "userId":"U176de9c656286feb470b121c184e1356"
+}
+
+###
+POST http://localhost:3000/api/pushmsg
