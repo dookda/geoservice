@@ -10,7 +10,7 @@ const client = new line.Client(config);
 
 app.post("/api/pushmsg", (req, res) => {
     // console.log(req.body);
-    let { userId } = req.body;
+    // let { userId } = req.body;
     const msg = [{
         type: 'text',
         text: 'มีรายงานจมน้ำเข้ามา เข้าไปดูที่ http://103.40.148.140/jomnam'
@@ -20,12 +20,18 @@ app.post("/api/pushmsg", (req, res) => {
         stickerId: "52002738"
     }];
 
-    if (userId) {
-        client.pushMessage(userId, msg)
-        // res.status(200).send();
-        res.sendStatus(200)
-    }
+    let sql = "SELECT * FROM joomana_line_noti"
+    db.query(sql).then(r => {
+        r.rows.map(async (x) => {
 
+            if (x.usrid) {
+                console.log(x.usrid);
+                await client.pushMessage(x.usrid, msg)
+            }
+        })
+    })
+
+    res.sendStatus(200)
 });
 
 app.get("/api/utm2latlon/:e/:n", (req, res) => {
@@ -75,7 +81,7 @@ app.post("/api/updateuser", (req, res) => {
             for (d in data) {
                 if (data[d] !== '') {
                     let sql = `UPDATE joomana_line_noti SET ${d}='${data[d]}', ts=now() WHERE usrid='${usrid}'`;
-                    console.log(sql);
+                    // console.log(sql);
                     db.query(sql)
                 }
             }
