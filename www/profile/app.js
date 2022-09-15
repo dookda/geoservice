@@ -12,8 +12,8 @@ function initializeLiff() {
     });
 }
 
-// var url = 'https://rti2dss.com/p3200';
-var url = 'https://ca94-202-28-250-89.ngrok.io'
+var url = 'https://rti2dss.com/p3200';
+// var url = 'https://ca94-202-28-250-89.ngrok.io'
 
 let getData = (usrid) => {
     axios.post(url + "/api/getuser", { usrid }).then((r) => {
