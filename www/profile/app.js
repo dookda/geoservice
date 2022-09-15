@@ -19,7 +19,8 @@ let getData = (usrid) => {
     axios.post(url + "/api/getuser", { usrid }).then((r) => {
 
         if (r.data.data.length > 0) {
-            console.log(r.data.data[0].noti);
+            // console.log(r);
+            // console.log(r.data.data[0].noti);
             r.data.data[0].noti == "yes" ? document.getElementById("chkUserid").checked = true : document.getElementById("chkUserid").checked = false
             // document.getElementById("displayName").value = r.data.data[0].noti;
         }
