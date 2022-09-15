@@ -1,0 +1,13 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    /* background-color: #f8f9fa !important; */
+    box-sizing: 0;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-120 {
+    margin-top: 120px;
+}
