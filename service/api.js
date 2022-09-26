@@ -10,15 +10,40 @@ const client = new line.Client(config);
 
 app.post("/api/pushmsg", (req, res) => {
     // console.log(req.body);
-    // let { userId } = req.body;
-    const msg = [{
-        type: 'text',
-        text: 'มีรายงานจมน้ำเข้ามา เข้าไปดูที่ http://103.40.148.140/jomnam'
-    }, {
-        type: 'sticker',
-        packageId: '11537',
-        stickerId: "52002738"
-    }];
+    let { status } = req.body;
+
+    let msg
+
+    if (status == 'รายงานสอบสวน') {
+        msg = [{
+            type: 'text',
+            text: `มี ${status} เข้ามาใหม่ เข้าไปดูที่ http://103.40.148.140/jomnam`
+        }, {
+            type: 'sticker',
+            packageId: '11537',
+            stickerId: "52002738"
+        }];
+    }
+    if (status == 'แหล่งน้ำเสี่ยง') {
+        msg = [{
+            type: 'text',
+            text: `มี ${status} เข้ามาใหม่ เข้าไปดูที่ http://103.40.148.140/jomnam`
+        }, {
+            type: 'sticker',
+            packageId: '11537',
+            stickerId: "52002748"
+        }];
+    }
+    if (status == 'ทีมผู้ก่อการดี') {
+        msg = [{
+            type: 'text',
+            text: `มี ${status} เข้ามาใหม่ เข้าไปดูที่ http://103.40.148.140/jomnam`
+        }, {
+            type: 'sticker',
+            packageId: '11537',
+            stickerId: "52002752"
+        }];
+    }
 
     let sql = "SELECT * FROM joomana_line_noti"
     db.query(sql).then(r => {
